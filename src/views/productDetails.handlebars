@@ -1,0 +1,18 @@
+<h1 style="text-align: center;">Detalles del Producto</h1>
+<div class="card" style="width: 18rem; margin: 15px;">
+  <div class="card-header">
+    {{title}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Descripción: {{product.description}}</li>
+    <li class="list-group-item">Categoría: {{product.category}}</li>
+    <li class="list-group-item">Precio: ${{product.price}}</li>
+    <li class="list-group-item">Stock: {{product.stock}}</li>
+    <li class="list-group-item">Código: {{product.code}}</li>
+    <li class="list-group-item">
+      <form method="post" action="/products/{{product._id}}/add-to-cart">
+        <button type="submit">Agregar al carrito</button>
+      </form>
+    </li>
+  </ul>
+</div>

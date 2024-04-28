@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+:root {
+  --main: #c41431;
+}
+
+body {
+  background-color: #f9f9f9;
+  font-family: "Poppins", sans-serif;
+}
+
+.home-header {
+  background-image: url(../assets/imgs/30perOff.webp);
+  height: 600px;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-position: inherit inherit !important;
+  z-index: auto;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  margin-top: 80px;
+  margin-bottom: 45px;
+}
+
+.home-levis-allways {
+  background-image: url(../assets/imgs/levis-esta-siempre.webp);
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-position: center center !important;
+  z-index: auto;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  height: 600px;
+  margin-bottom: 45px;
+}
+
+.home-cards-to-products {
+  padding: 0px;
+  margin-bottom: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+.home-cards-to-products .home-card-container {
+  height: 490px;
+  width: 370px;
+}
+.home-cards-to-products .home-card-container .home-card-img-container {
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-position: center center !important;
+  z-index: auto;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  height: 100%;
+  position: relative;
+}
+.home-cards-to-products .home-card-container .home-card-img-container .home-card-button {
+  background-image: url(../assets/logos/main-logo-no-letters.svg);
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-position: center center !important;
+  z-index: auto;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  position: absolute;
+  bottom: 15px;
+  width: 150px;
+  height: 62.25px;
+  left: 30%;
+  right: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-cards-to-products .home-card-container .home-card-img-container .home-card-button a {
+  text-decoration: none;
+  color: white;
+  font-size: x-large;
+  font-weight: 600;
+}
+.home-cards-to-products .home-card-container .home-card-img-container .home-card-button a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=style.css.map */

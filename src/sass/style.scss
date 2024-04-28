@@ -1,0 +1,66 @@
+@use "./global/" as *;
+
+:root {
+  --main: #c41431;
+}
+
+body {
+  background-color: #f9f9f9;
+  font-family: $ff-body;
+}
+
+.home-header {
+  background-image: url(../assets/imgs/30perOff.webp);
+  height: 600px;
+  @include bg-pic-config(scroll, inherit, inherit);
+  margin-top: 80px;
+  margin-bottom: 45px;
+}
+
+.home-levis-allways {
+  background-image: url(../assets/imgs/levis-esta-siempre.webp);
+  @include bg-pic-config(scroll, center, center);
+  height: 600px;
+  margin-bottom: 45px;
+}
+
+.home-cards-to-products {
+  padding: 0px;
+  margin-bottom: 45px;
+  display: flex;
+  justify-content: space-between;
+
+  .home-card-container {
+    height: 490px;
+    width: 370px;
+
+    .home-card-img-container {
+      @include bg-pic-config(scroll, center, center);
+      height: 100%;
+      position: relative;
+
+      .home-card-button {
+        background-image: url(../assets/logos/main-logo-no-letters.svg);
+        @include bg-pic-config(scroll, center, center);
+        position: absolute;
+        bottom: 15px;
+        width: 150px;
+        height: 62.25px;
+        left: 30%;
+        right: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: x-large;
+          font-weight: 600;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@mixin navbar-styles {
+  .bg-primary {
+    background: var(--main) !important;
+  }
+
+  .ftco-section {
+    padding: 7em 0;
+  }
+
+  .ftco-no-pt {
+    padding-top: 0;
+  }
+
+  .ftco-no-pb {
+    padding-bottom: 0;
+  }
+
+  .heading-section {
+    font-size: 28px;
+    color: #000;
+  }
+
+  .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .ftco-navbar-light {
+    background: #fff !important;
+    z-index: 3;
+    padding: 10px 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+    -moz-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light {
+      background: #000 !important;
+      position: relative;
+      top: 0;
+      padding: 10px 15px;
+    }
+  }
+  .ftco-navbar-light .navbar-brand {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .ftco-navbar-light .navbar-brand:hover,
+  .ftco-navbar-light .navbar-brand:focus {
+    color: #000;
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light .navbar-brand {
+      color: #fff;
+    }
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light .navbar-nav {
+      padding-bottom: 10px;
+    }
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+    font-size: 13px;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 400;
+    color: #333333;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 1 !important;
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
+    color: var(--main);
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0.9rem;
+      padding-bottom: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
+      color: #fff;
+    }
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link.icon-cart {
+    border: 1px solid var(--main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link.icon-cart .fa {
+    color: var(--main);
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu {
+    border: none;
+    background: #fff;
+    -webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+    border-radius: 4px;
+    padding: 0;
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu .dropdown-item {
+    font-size: 12px;
+    color: #000;
+  }
+  .ftco-navbar-light
+    .navbar-nav
+    > .nav-item
+    .dropdown-menu
+    .dropdown-item:hover,
+  .ftco-navbar-light
+    .navbar-nav
+    > .nav-item
+    .dropdown-menu
+    .dropdown-item:focus {
+    background: var(--main);
+    color: #fff;
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
+    color: #fff;
+    background: var(--main);
+    border-radius: 0px;
+  }
+  @media (max-width: 767.98px) {
+    .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
+      color: #fff;
+      background: var(--main);
+      border-radius: 4px;
+    }
+  }
+  .ftco-navbar-light .navbar-nav > .nav-item.active > a {
+    color: var(--main);
+  }
+  @media (max-width: 991.98px) {
+    .ftco-navbar-light .navbar-nav > .nav-item.active > a {
+      color: #fff;
+    }
+  }
+  .ftco-navbar-light .navbar-toggler {
+    border: none;
+    color: rgba(255, 255, 255, 0.5) !important;
+    cursor: pointer;
+    padding-right: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
+  .ftco-navbar-light .navbar-toggler:focus {
+    outline: none !important;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+}

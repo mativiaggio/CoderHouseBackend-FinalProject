@@ -1,0 +1,10 @@
+@mixin bg-pic-config($attach, $bgp1, $bgp2) {
+  background-repeat: no-repeat !important;
+  background-attachment: $attach !important;
+  background-position: $bgp1 $bgp2 !important;
+  z-index: auto;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+}
