@@ -144,10 +144,14 @@ router.get("/cart/:cid", privateAccess, async (req, res) => {
         }
       }
 
-      res.render("cartDetails", {
-        title: `Cart ${cartId}`,
-        cart: { products },
-      });
+      // console.log("productos del carrito: " + JSON.stringify(products));
+
+      // res.render("cartDetails", {
+      //   title: `Cart ${cartId}`,
+      //   cart: { products },
+      // });
+
+      res.render("cartDetails", { cart: cart, products: products });
     } else {
       res.status(404).json({ error: "Cart not found" });
     }

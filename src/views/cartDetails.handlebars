@@ -1,19 +1,35 @@
-<link rel="stylesheet" href="./css/style.css" />
-<h1>{{title}}</h1>
+<div id="main-cart-container" data-cart-id="{{cart._id}}">
+  <h1>Cart Details</h1>
+  {{#if products}}
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Code</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <td>{{title}}</td>
+            <td>{{code}}</td>
+            <td>
+              <button onclick="decrement('{{_id}}')">-</button>
+              <span id="quantity_{{_id}}">{{quantity}}</span>
+              <button onclick="increment('{{_id}}')">+</button>
+            </td>
+            <td>{{price}}</td>
+            <td><button onclick="removeProduct('{{_id}}')">Remove</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No products found in the cart.</p>
+  {{/if}}
+</div>
 
-{{#if cart}}
-  <h2>Productos en el Carrito</h2>
-  <div class="product-cards">
-    {{#each cart.products}}
-      <div class="product-card">
-        <img src="{{this.thumbnail}}" alt="{{this.title}}" />
-        <h3>{{this.title}}</h3>
-        <p>{{this.description}}</p>
-        <p>Cantidad: {{this.quantity}}</p>
-        <p>Precio unitario: ${{this.price}}</p>
-      </div>
-    {{/each}}
-  </div>
-{{else}}
-  <p>No se encontraron productos en el carrito.</p>
-{{/if}}
+<script src="/js/cartDetails.js"></script>
