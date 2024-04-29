@@ -1,7 +1,14 @@
 <div id="main-cart-container" data-cart-id="{{cart._id}}">
+  <style>
+    table { border: 1px solid #c50a2c; } button { background-color: #c50a2c;
+    border: none; outline: none; color: white; border-radius: 50px; font-weight:
+    600; cursor: pointer;} th { text-align: center; border-right: 1px solid
+    #c50a2c; border-bottom: 1px solid #c50a2c;} td { border-right: 1px solid
+    #c50a2c; } p{ margin: 0 !important;}
+  </style>
   <h1>Cart Details</h1>
   {{#if products}}
-    <table>
+    <table style="width: 100%;">
       <thead>
         <tr>
           <th>Product Name</th>
@@ -11,20 +18,32 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="width: 100%;">
         {{#each products}}
-          <tr>
+          <tr id="row_{{_id}}">
             <td>{{title}}</td>
-            <td>{{code}}</td>
-            <td>
+            <td style="text-align: center;">{{code}}</td>
+            <td style="text-align: center;">
               <button onclick="decrement('{{_id}}')">-</button>
               <span id="quantity_{{_id}}">{{quantity}}</span>
               <button onclick="increment('{{_id}}')">+</button>
             </td>
-            <td>{{price}}</td>
-            <td><button onclick="removeProduct('{{_id}}')">Remove</button></td>
+            <td style="text-align: right;">{{price}}</td>
+            <td style="text-align: center;"><button
+                onclick="removeProduct('{{_id}}')"
+              >Remove</button></td>
           </tr>
         {{/each}}
+        <tr style="border-top: 1px solid red;">
+          <td colspan="3">
+            <p>
+              Total
+            </p>
+          </td>
+          <td style="text-align: right;">
+            <p id="cart-total"> {{cart.total}}</p>
+          </td>
+        </tr>
       </tbody>
     </table>
   {{else}}

@@ -10,6 +10,8 @@ const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 
 // Importing routes
+const cartsRouter = require("./routes/carts.router");
+const productsRouter = require("./routes/products.router");
 const viewsRouter = require("./routes/views.router");
 const sessionRouter = require("./routes/sessions.router");
 const emailRouter = require("./routes/emails.router");
@@ -88,6 +90,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use("/api/carts", cartsRouter);
+app.use("/api/products", productsRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/mail", emailRouter);
 app.use("/", viewsRouter);

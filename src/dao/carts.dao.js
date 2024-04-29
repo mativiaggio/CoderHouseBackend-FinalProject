@@ -1,4 +1,5 @@
 const Cart = require("../models/carts");
+const Product = require("../models/products");
 
 class CartDAO {
   // Crea un carrito con los productos proporcionados
@@ -43,7 +44,6 @@ class CartDAO {
     }
   }
 
-  // Añade un producto al carrito
   async addProductToCart(cartId, productId) {
     try {
       const cart = await Cart.findById(cartId);
@@ -60,10 +60,16 @@ class CartDAO {
       if (existingProduct) {
         existingProduct.quantity++;
       } else {
-        cart.products.push({ id: productId, quantity: 1 });
+        // Aquí asumimos que el producto tiene un precio almacenado en la base de datos
+        const product = await Product.findById(productId);
+        cart.products.push({
+          id: productId,
+          quantity: 1,
+          price: product.price,
+        });
       }
 
-      await cart.save();
+      await this.calculateAndUpdateTotal(cart); // Llama al método para calcular y actualizar el total
       return existingProduct || { id: productId, quantity: 1 };
     } catch (error) {
       console.error("Error adding product to cart:", error.message);
@@ -71,7 +77,6 @@ class CartDAO {
     }
   }
 
-  // Actualiza la cantidad de un producto en el carrito
   async updateProductQuantity(cartId, productId, quantity) {
     try {
       const cart = await Cart.findById(cartId);
@@ -87,8 +92,9 @@ class CartDAO {
 
       if (existingProduct) {
         existingProduct.quantity = quantity;
+        await this.calculateAndUpdateTotal(cart); // Llama al método para calcular y actualizar el total
         await cart.save();
-        return existingProduct;
+        return cart;
       } else {
         console.error("Product not found in the cart");
         return { error: "Product not found in the cart" };
@@ -99,7 +105,6 @@ class CartDAO {
     }
   }
 
-  // Elimina un producto del carrito
   async removeProductFromCart(cartId, productId) {
     try {
       const cart = await Cart.findById(cartId);
@@ -115,6 +120,7 @@ class CartDAO {
 
       if (indexToRemove !== -1) {
         cart.products.splice(indexToRemove, 1);
+        await this.calculateAndUpdateTotal(cart); // Llama al método para calcular y actualizar el total
         await cart.save();
         return { message: "Product removed from cart" };
       } else {
@@ -123,6 +129,22 @@ class CartDAO {
       }
     } catch (error) {
       console.error("Error removing product from cart:", error.message);
+      throw error;
+    }
+  }
+
+  async calculateAndUpdateTotal(cart) {
+    try {
+      let total = 0;
+      for (const product of cart.products) {
+        // Aquí asumimos que cada producto tiene un precio y una cantidad
+        const productData = await Product.findById(product.id);
+        total += productData.price * product.quantity;
+      }
+      cart.total = total;
+      await cart.save();
+    } catch (error) {
+      console.error("Error calculating and updating total:", error.message);
       throw error;
     }
   }

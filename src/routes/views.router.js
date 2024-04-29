@@ -134,7 +134,6 @@ router.get("/cart/:cid", privateAccess, async (req, res) => {
     if (cart) {
       const products = [];
       for (const item of cart.products) {
-        console.log("Product ID is " + item.id);
         const product = await productController.getProductById(item.id);
         if (product) {
           products.push({

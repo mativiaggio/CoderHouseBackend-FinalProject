@@ -52,7 +52,7 @@ class CartController {
       return result;
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      throw error;
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 
@@ -67,10 +67,10 @@ class CartController {
         quantity
       );
 
-      return result;
+      res.status(200).json(result);
     } catch (error) {
       console.error("Error updating product quantity:", error);
-      throw error;
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 
@@ -83,10 +83,10 @@ class CartController {
         productId
       );
 
-      return result;
+      res.status(200).json(result);
     } catch (error) {
       console.error("Error removing product from cart:", error);
-      throw error;
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 }
