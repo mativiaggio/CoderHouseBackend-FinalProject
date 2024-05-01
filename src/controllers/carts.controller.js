@@ -89,6 +89,39 @@ class CartController {
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
+
+  // Obtiene un carrito por su ID
+  async purchaseCart(paramcartId) {
+    try {
+      const cartId = paramcartId;
+
+      const cart = await this.cartDAO.getCartById(cartId);
+
+      if (!cart) {
+        console.error("Cart not found");
+        return { error: "Cart not found" };
+      }
+
+      const user = cart.user;
+
+      const newTicket = new TicketModel({
+        user: user,
+        purchaser: user.email,
+        cartId: cartId,
+        products: cart.products,
+        total_amount: cart.total,
+      });
+
+      await newTicket.save();
+
+      await this.cartDAO.removeCart(cartId);
+
+      return newTicket;
+    } catch (error) {
+      console.error("Error purchasing cart:", error.message);
+      throw error;
+    }
+  }
 }
 
 module.exports = CartController;
