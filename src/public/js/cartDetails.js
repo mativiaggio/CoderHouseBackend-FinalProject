@@ -46,3 +46,23 @@ function removeProduct(productId) {
     row.parentNode.removeChild(row);
   });
 }
+
+document
+  .getElementById("purchaseButton")
+  .addEventListener("click", function () {
+    fetch(`/api/carts/${cartId}/purchase`, {
+      method: "POST",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error purchasing cart");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Purchase successful:", data);
+      })
+      .catch((error) => {
+        console.error("Error purchasing cart:", error.message);
+      });
+  });

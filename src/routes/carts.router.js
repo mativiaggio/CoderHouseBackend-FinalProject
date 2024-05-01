@@ -28,16 +28,13 @@ router.delete(
   cartController.removeProductFromCart.bind(cartController)
 );
 
-// Purchase
-// router.get(
-//   "/:cartId/purchase",
-//   cartController.purchaseCart.bind(cartController)
-// );
-router.get("/:cartId/purchase", async (req, res) => {
+// // Purchase
+router.post("/:cartId/purchase", async (req, res) => {
   try {
     const cartId = req.params.cartId;
     const purchasedCart = await cartController.purchaseCart(cartId);
-    res.status(200).json(purchasedCart);
+    // res.status(200).json(purchasedCart);
+    res.redirect("/");
   } catch (error) {
     console.error("Error purchasing cart:", error.message);
     res.status(500).json({ error: "Internal Server Error" });

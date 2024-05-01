@@ -148,6 +148,26 @@ class CartDAO {
       throw error;
     }
   }
+
+  async emptyCart(cartId) {
+    try {
+      const cart = await Cart.findById(cartId);
+
+      if (!cart) {
+        console.error("Cart not found");
+        return { error: "Cart not found" };
+      }
+
+      cart.products = [];
+      cart.total = 0;
+      await cart.save();
+
+      return cart;
+    } catch (error) {
+      console.error("Error emptying cart:", error.message);
+      throw error;
+    }
+  }
 }
 
 module.exports = CartDAO;

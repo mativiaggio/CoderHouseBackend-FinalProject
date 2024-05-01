@@ -27,8 +27,9 @@ class ProductDAO {
   }
 
   async getProductById(productId) {
+    console.log("id " + productId);
     try {
-      const product = await Product.findOne({ _id: productId }).lean();
+      const product = await Product.findById(productId).lean();
 
       if (product) {
         return product;
@@ -83,6 +84,24 @@ class ProductDAO {
     } catch (error) {
       console.error("Error contando productos:", error);
       return 0;
+    }
+  }
+
+  async updateProductStock(productId, quantityChange) {
+    try {
+      const product = await Product.findById(productId).lean();
+      if (!product) {
+        throw new Error("Producto no encontrado");
+      }
+
+      let currentStock = product.stock;
+      currentStock += quantityChange;
+      await Product.findByIdAndUpdate(productId, { stock: currentStock });
+
+      return { status: "Stock actualizado correctamente" };
+    } catch (error) {
+      console.error("Error al actualizar el stock del producto:", error);
+      throw error;
     }
   }
 }

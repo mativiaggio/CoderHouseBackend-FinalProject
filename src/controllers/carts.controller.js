@@ -1,8 +1,14 @@
+const ProductDAO = require("../dao/products.dao");
 const CartDAO = require("../dao/carts.dao");
+const UserDAO = require("../dao/users.dao");
+const TicketDAO = require("../dao/tickets.dao");
 
 class CartController {
   constructor() {
+    this.productDAO = new ProductDAO();
     this.cartDAO = new CartDAO();
+    this.userDAO = new UserDAO();
+    this.ticketDAO = new TicketDAO();
   }
 
   // Crea un nuevo carrito
@@ -91,34 +97,21 @@ class CartController {
   }
 
   // Obtiene un carrito por su ID
-  async purchaseCart(paramcartId) {
+  async purchaseCart(cartId) {
     try {
-      const cartId = paramcartId;
-
       const cart = await this.cartDAO.getCartById(cartId);
+      const user = await this.userDAO.getUserById(cart.user);
 
       if (!cart) {
         console.error("Cart not found");
         return { error: "Cart not found" };
       }
+      const ticket = await this.ticketDAO.createTicket(cart, user);
+      await this.cartDAO.emptyCart(cartId);
 
-      const user = cart.user;
-
-      const newTicket = new TicketModel({
-        user: user,
-        purchaser: user.email,
-        cartId: cartId,
-        products: cart.products,
-        total_amount: cart.total,
-      });
-
-      await newTicket.save();
-
-      await this.cartDAO.removeCart(cartId);
-
-      return newTicket;
+      return ticket;
     } catch (error) {
-      console.error("Error purchasing cart:", error.message);
+      console.error("Error purchasing cart:", error);
       throw error;
     }
   }

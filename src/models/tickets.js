@@ -18,6 +18,7 @@ const ticketSchema = new mongoose.Schema({
     {
       productId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "Product", // Ajusta esto según el nombre del modelo de tu producto
         required: true,
       },
       name: String,
@@ -32,6 +33,10 @@ const ticketSchema = new mongoose.Schema({
   },
   total_amount: {
     type: Number,
+    required: true,
+  },
+  token: {
+    type: String,
     required: true,
   },
 });

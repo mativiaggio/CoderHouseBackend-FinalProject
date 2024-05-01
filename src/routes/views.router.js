@@ -159,4 +159,8 @@ router.get("/cart/:cid", privateAccess, async (req, res) => {
   }
 });
 
+router.get("/purchasesuccessful", privateAccess, async (req, res) => {
+  res.render("purchaseSuccessful");
+});
+
 module.exports = router;
