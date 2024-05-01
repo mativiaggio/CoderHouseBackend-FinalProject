@@ -15,6 +15,7 @@ const productsRouter = require("./routes/products.router");
 const viewsRouter = require("./routes/views.router");
 const sessionRouter = require("./routes/sessions.router");
 const emailRouter = require("./routes/emails.router");
+const mocksRouter = require("./routes/mocks.router");
 
 // Importing configurations
 const initializePassport = require("./config/passport.config");
@@ -94,6 +95,7 @@ app.use("/api/carts", cartsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/mail", emailRouter);
+app.use("/mocks", mocksRouter);
 app.use("/", viewsRouter);
 
 // Starting the server
